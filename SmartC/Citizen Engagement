@@ -1,0 +1,9 @@
+class CitizenFeedback:
+    def __init__(self):
+        self.feedback = []
+
+    def submit_feedback(self, message):
+        self.feedback.append(message)
+
+    def display_feedback(self):
+        return self.feedback

@@ -1,0 +1,13 @@
+class Utility:
+    def __init__(self, name, capacity):
+        self.name = name
+        self.capacity = capacity  # e.g., electricity in kWh, water in liters
+
+    def monitor_usage(self):
+        raise NotImplementedError("Subclasses must implement this method.")
+class ElectricityGrid(Utility):
+    def monitor_usage(self):
+        return f"Monitoring electricity grid: {self.name} with capacity {self.capacity} kWh."
+class WaterSupply(Utility):
+    def monitor_usage(self):
+        return f"Monitoring water supply: {self.name} with capacity {self.capacity} liters."

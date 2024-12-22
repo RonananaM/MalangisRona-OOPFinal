@@ -1,9 +1,30 @@
 class CitizenFeedback:
     def __init__(self):
+        """
+        Initializes the CitizenFeedback instance with an empty feedback list.
+        """
         self.feedback = []
 
     def submit_feedback(self, message):
+        """
+        Submits feedback from a citizen.
+
+        :param message: The feedback message from the citizen.
+        :raises ValueError: If the message is empty or not a string.
+        """
+        if not isinstance(message, str):
+            raise ValueError("Feedback must be a string.")
+        if not message.strip():
+            raise ValueError("Feedback message cannot be empty.")
+        
         self.feedback.append(message)
 
     def display_feedback(self):
+        """
+        Returns all submitted feedback.
+
+        :return: A list of feedback messages.
+        """
+        if not self.feedback:
+            return "No feedback available."
         return self.feedback

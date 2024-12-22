@@ -1,13 +1,39 @@
+# Base class for utilities
 class Utility:
     def __init__(self, name, capacity):
+        """
+        Initializes the Utility instance.
+
+        :param name: Name of the utility (e.g., 'Electricity Grid' or 'Water Supply')
+        :param capacity: Capacity of the utility (e.g., in kWh for electricity, in liters for water)
+        """
         self.name = name
-        self.capacity = capacity  # e.g., electricity in kWh, water in liters
+        self.capacity = capacity  # Capacity in relevant units (e.g., kWh for electricity, liters for water)
 
     def monitor_usage(self):
+        """
+        Method to monitor usage of the utility. This method should be implemented by subclasses.
+        """
         raise NotImplementedError("Subclasses must implement this method.")
+
+
+# Subclass for electricity grid utility
 class ElectricityGrid(Utility):
     def monitor_usage(self):
+        """
+        Monitors the usage of the electricity grid.
+
+        :return: A string summarizing the electricity grid status
+        """
         return f"Monitoring electricity grid: {self.name} with capacity {self.capacity} kWh."
+
+
+# Subclass for water supply utility
 class WaterSupply(Utility):
     def monitor_usage(self):
+        """
+        Monitors the usage of the water supply system.
+
+        :return: A string summarizing the water supply status
+        """
         return f"Monitoring water supply: {self.name} with capacity {self.capacity} liters."

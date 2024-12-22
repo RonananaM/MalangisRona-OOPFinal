@@ -1,8 +1,43 @@
+# Base CityEntity Class
+class CityEntity:
+    def __init__(self, name, location):
+        self.name = name
+        self.location = location  # Location as a tuple (latitude, longitude)
+
+    def render(self):
+        raise NotImplementedError("Subclasses must implement this method.")
+
+
+# Building Class
 class Building(CityEntity):
     def __init__(self, name, location, height, building_type):
-        super().__init__(name, location)
+        super().__init__(name, location)  # Initialize the base class
         self.height = height
         self.building_type = building_type  # e.g., Residential, Commercial
 
     def render(self):
-        return f"Rendering {self.building_type} building: {self.name}."
+        # Return a formatted string describing the building
+        return f"Rendering {self.building_type} building: {self.name} with height {self.height} meters."
+
+
+# Road Class
+class Road(CityEntity):
+    def __init__(self, name, location, length, road_type):
+        super().__init__(name, location)  # Initialize the base class
+        self.length = length
+        self.road_type = road_type  # e.g., Highway, Local
+
+    def render(self):
+        # Return a formatted string describing the road
+        return f"Rendering {self.road_type} road: {self.name} with length {self.length} km."
+
+
+# Park Class
+class Park(CityEntity):
+    def __init__(self, name, location, area):
+        super().__init__(name, location)  # Initialize the base class
+        self.area = area  # Area in square meters
+
+    def render(self):
+        # Return a formatted string describing the park
+        return f"Rendering park: {self.name} with area {self.area} sq. meters."

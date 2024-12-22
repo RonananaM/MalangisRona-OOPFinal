@@ -1,0 +1,38 @@
+// Base class TransportMode
+public class TransportMode {
+    protected String name;
+    protected int capacity;
+
+    public TransportMode(String name, int capacity) {
+        this.name = name;
+        this.capacity = capacity;
+    }
+
+    public String calculateRoute(String start, String end) {
+        throw new UnsupportedOperationException("Subclasses must implement this method.");
+    }
+}
+
+// Bus class inherits from TransportMode
+public class Bus extends TransportMode {
+    public Bus(String name, int capacity) {
+        super(name, capacity);
+    }
+
+    @Override
+    public String calculateRoute(String start, String end) {
+        return "Calculating bus route from " + start + " to " + end + ".";
+    }
+}
+
+// Bike class inherits from TransportMode
+public class Bike extends TransportMode {
+    public Bike(String name, int capacity) {
+        super(name, capacity);
+    }
+
+    @Override
+    public String calculateRoute(String start, String end) {
+        return "Calculating bike route from " + start + " to " + end + ".";
+    }
+}

@@ -1,0 +1,32 @@
+// Define the CityEntity base class
+public class CityEntity {
+    private String name;
+    private String location; // location is a string for simplicity
+
+    public CityEntity(String name, String location) {
+        this.name = name;
+        this.location = location;
+    }
+
+    public void render() {
+        throw new UnsupportedOperationException("Subclasses must implement this method.");
+    }
+}
+
+// Define the Building class that inherits from CityEntity
+public class Building extends CityEntity {
+    private int height;
+    private String buildingType; // e.g., Residential, Commercial
+
+    public Building(String name, String location, int height, String buildingType) {
+        super(name, location);
+        this.height = height;
+        this.buildingType = buildingType;
+    }
+
+    @Override
+    public void render() {
+        // Return a formatted string that describes the building
+        System.out.println("Rendering " + buildingType + " building: " + name + " with height " + height + " meters.");
+    }
+}

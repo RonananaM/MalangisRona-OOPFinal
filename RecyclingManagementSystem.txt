@@ -1,0 +1,16 @@
+class RecyclingManagementSystem:
+    def __init__(self):
+        self.centers = []  # List of RecyclingCenter objects
+
+    def add_center(self, center):
+        self.centers.append(center)
+
+    def distribute_material(self, material):
+        for center in self.centers:
+            if center.current_load + material.weight <= center.capacity:
+                return center.add_material(material)
+        return "No recycling center has enough capacity to handle this material."
+
+    def process_all_centers(self):
+        for center in self.centers:
+            print(center.process_all_materials())

@@ -1,8 +1,0 @@
-class CustomMaterial(RecyclingMaterial):
-    def __init__(self, material_type, weight, custom_properties):
-        super().__init__(material_type, weight)
-        self.custom_properties = custom_properties  # Dictionary of custom attributes (e.g., {"color": "blue"})
-
-    def process_material(self):
-        return (f"Processing {self.weight} kg of {self.material_type} "
-                f"with properties: {self.custom_properties}.")

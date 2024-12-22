@@ -1,0 +1,8 @@
+class Building(CityEntity):
+    def __init__(self, name, location, height, building_type):
+        super().__init__(name, location)
+        self.height = height
+        self.building_type = building_type  # e.g., Residential, Commercial
+
+    def render(self):
+        return f"Rendering {self.building_type} building: {self.name}."

@@ -1,0 +1,93 @@
+class RecyclingMaterial:
+    """Base class representing recyclable materials."""
+    
+    def __init__(self, material_type, weight):
+        self.material_type = material_type
+        self.weight = weight
+
+    def __str__(self):
+        return f"{self.weight} kg of {self.material_type}"
+
+
+class CustomMaterial(RecyclingMaterial):
+    """Subclass for specialized recycling materials with additional attributes."""
+    
+    def __init__(self, material_type, weight, recycling_code, is_hazardous):
+        super().__init__(material_type, weight)
+        self.recycling_code = recycling_code
+        self.is_hazardous = is_hazardous
+
+    def __str__(self):
+        hazardous_status = "Hazardous" if self.is_hazardous else "Non-Hazardous"
+        return f"{super().__str__()} (Code: {self.recycling_code}, {hazardous_status})"
+
+
+class RecyclingCenter:
+    """Represents a recycling center that manages materials."""
+    
+    def __init__(self, name):
+        self.name = name
+        self.materials = []
+
+    def add_material(self, material):
+        self.materials.append(material)
+        print(f"Added {material} to {self.name}.")
+
+    def process_materials(self):
+        print(f"Processing materials at {self.name}:")
+        for material in self.materials:
+            print(f"Processing {material}...")
+        self.materials.clear()  # Clear materials after processing
+
+
+class RecyclingManagementSystem:
+    """Main program class for managing multiple recycling centers."""
+    
+    def __init__(self):
+        self.centers = []
+
+    def add_center(self, center):
+        self.centers.append(center)
+        print(f"Added recycling center: {center.name}")
+
+    def main(self):
+        """Entry point for the SmartCity Planner program."""
+        print("Welcome to the SmartCity Planner - Recycling Management System")
+        
+        # Example of adding centers and materials
+        center1 = RecyclingCenter("Downtown Recycling Center")
+        center2 = RecyclingCenter("Uptown Recycling Center")
+
+        self.add_center(center1)
+        self.add_center(center2)
+
+        # Adding materials
+        material1 = RecyclingMaterial("Plastic", 150)
+        material2 = CustomMaterial("Batteries", 50, "BAT123", True)
+
+        center1.add_material(material1)
+        center1.add_material(material2)
+
+        # Processing materials
+        center1.process_materials()
+
+    def contributing(self):
+        """Outlines how users or developers can enhance the SmartCity Planner."""
+        print("Contributing to the SmartCity Planner:")
+        print("1. Add new recycling materials and types.")
+        print("2. Implement more recycling centers.")
+        print("3. Enhance data analytics for better decision-making.")
+        print("4. Collaborate with local governments for community engagement.")
+
+    def conclusion(self):
+        """Summarizes the program's purpose and future scope."""
+        print("Conclusion:")
+        print("The SmartCity Planner aims to improve urban sustainability through effective recycling management.")
+        print("Future enhancements may include integrating IoT for real-time data collection and AI for predictive analytics.")
+
+
+if __name__ == "__main__":
+    system = RecyclingManagementSystem()
+    system.main()
+    system.contributing()
+    system.conclusion()
